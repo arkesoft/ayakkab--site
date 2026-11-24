@@ -1,0 +1,278 @@
+@import "tailwindcss";
+
+/* ===========================================================================
+   TEMALAR — site.config.ts içindeki `theme` alanı hangi veri setini
+   kullanacağımızı belirler. Renkler buradan, başka hiçbir yerden gelmez.
+   ======================================================================== */
+
+:root,
+[data-theme="krem-taba"] {
+  --c-bg: #f7f2ea;
+  --c-bg-alt: #efe7da;
+  --c-bg-deep: #1f1912;
+  --c-ink: #1e1812;
+  --c-ink-soft: #6e6153;
+  --c-line: #ded3c2;
+  --c-accent: #8d5f33;
+  --c-accent-soft: #a37a45;
+  --c-on-accent: #fbf7f0;
+  --c-on-deep: #ece3d6;
+
+  --c-tone-0-a: #ece4d6; --c-tone-0-b: #dcd0ba; --c-tone-0-ink: rgba(30, 24, 18, 0.42);
+  --c-tone-1-a: #cdb997; --c-tone-1-b: #b59c77; --c-tone-1-ink: rgba(30, 24, 18, 0.45);
+  --c-tone-2-a: #8a7257; --c-tone-2-b: #6b573f; --c-tone-2-ink: rgba(247, 242, 234, 0.6);
+  --c-tone-3-a: #3b3025; --c-tone-3-b: #241c15; --c-tone-3-ink: rgba(236, 227, 214, 0.5);
+}
+
+[data-theme="antrasit-altin"] {
+  --c-bg: #121211;
+  --c-bg-alt: #1b1a18;
+  --c-bg-deep: #0a0a09;
+  --c-ink: #efe9df;
+  --c-ink-soft: #9c958a;
+  --c-line: #302d28;
+  --c-accent: #c2a14d;
+  --c-accent-soft: #8e7636;
+  --c-on-accent: #141310;
+  --c-on-deep: #efe9df;
+
+  --c-tone-0-a: #26241f; --c-tone-0-b: #1a1917; --c-tone-0-ink: rgba(239, 233, 223, 0.38);
+  --c-tone-1-a: #3a342a; --c-tone-1-b: #272319; --c-tone-1-ink: rgba(194, 161, 77, 0.55);
+  --c-tone-2-a: #4c4538; --c-tone-2-b: #332e26; --c-tone-2-ink: rgba(239, 233, 223, 0.45);
+  --c-tone-3-a: #1d1c19; --c-tone-3-b: #121211; --c-tone-3-ink: rgba(239, 233, 223, 0.3);
+}
+
+[data-theme="beyaz-siyah"] {
+  --c-bg: #ffffff;
+  --c-bg-alt: #f4f4f2;
+  --c-bg-deep: #0a0a0a;
+  --c-ink: #0a0a0a;
+  --c-ink-soft: #6a6a68;
+  --c-line: #e2e2de;
+  --c-accent: #0a0a0a;
+  --c-accent-soft: #4a4a48;
+  --c-on-accent: #ffffff;
+  --c-on-deep: #f2f2f0;
+
+  --c-tone-0-a: #f0f0ed; --c-tone-0-b: #e3e3df; --c-tone-0-ink: rgba(10, 10, 10, 0.34);
+  --c-tone-1-a: #dadad5; --c-tone-1-b: #c7c7c1; --c-tone-1-ink: rgba(10, 10, 10, 0.4);
+  --c-tone-2-a: #9c9c96; --c-tone-2-b: #84847d; --c-tone-2-ink: rgba(255, 255, 255, 0.72);
+  --c-tone-3-a: #2c2c2a; --c-tone-3-b: #151514; --c-tone-3-ink: rgba(255, 255, 255, 0.5);
+}
+
+@theme inline {
+  --font-display: var(--font-display-src), serif;
+  --font-sans: var(--font-sans-src), sans-serif;
+
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-bg-alt);
+  --color-deep: var(--c-bg-deep);
+  --color-ink: var(--c-ink);
+  --color-soft: var(--c-ink-soft);
+  --color-line: var(--c-line);
+  --color-accent: var(--c-accent);
+  --color-accent-soft: var(--c-accent-soft);
+  --color-on-accent: var(--c-on-accent);
+  --color-on-deep: var(--c-on-deep);
+
+  --spacing-section: clamp(4.5rem, 10vw, 9.5rem);
+}
+
+/* ===========================================================================
+   TABAN
+   ======================================================================== */
+
+@layer base {
+  * {
+    min-width: 0;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--c-bg);
+    color: var(--c-ink);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--c-accent);
+    color: var(--c-on-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-weight: 400;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  img, svg, video {
+    display: block;
+    max-width: 100%;
+  }
+
+  input, select, textarea, button {
+    font: inherit;
+    color: inherit;
+  }
+}
+
+/* ===========================================================================
+   YARDIMCI SINIFLAR
+   ======================================================================== */
+
+@utility shell {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 88rem;
+  padding-inline: clamp(1.25rem, 5vw, 5rem);
+}
+
+@utility kicker {
+  font-size: 0.6875rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--c-ink-soft);
+  font-weight: 500;
+}
+
+@utility display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 10.5vw, 7.5rem);
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+  font-weight: 400;
+}
+
+@utility display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2.125rem, 6.2vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+
+@utility display-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.625rem, 3.6vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+}
+
+@utility lede {
+  font-size: clamp(1rem, 1.35vw, 1.1875rem);
+  line-height: 1.65;
+  color: var(--c-ink-soft);
+}
+
+@utility rule {
+  border: 0;
+  border-top: 1px solid var(--c-line);
+}
+
+/* --- Hareket ------------------------------------------------------------ */
+
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  transition:
+    opacity 1s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-img {
+  clip-path: inset(0 0 12% 0);
+  opacity: 0.001;
+  transition:
+    clip-path 1.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 1s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-img[data-visible="true"] {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+}
+
+.parallax-layer {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .reveal-img {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+
+  .parallax-layer {
+    transform: none !important;
+  }
+}
+
+/* --- Bileşen kalıpları -------------------------------------------------- */
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: left 100%;
+  transition: background-size 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  padding-bottom: 2px;
+}
+
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mobil alt çubuk için güvenli alan */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@keyframes loading {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
